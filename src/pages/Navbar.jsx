@@ -1,21 +1,22 @@
 import React from "react";
-import { FaSearch } from "react-icons/fa";
-import { Link, Outlet } from "react-router";
+import { LiaShoppingBagSolid } from "react-icons/lia";
+import { useSelector } from "react-redux";
+import { Link, NavLink, Outlet } from "react-router";
 
 const Navbar = () => {
+  const cartItem = useSelector((state) => state.cart.items);
+
+  const totalItems = cartItem.reduce(
+  (sum, item) => sum + (item.quantity || 1),
+  0
+);
   return (
     <>
       <div className="navbar">
         <div>
-          <Link to={"/"} className="logo">Bicycles.Np</Link>
-        </div>
-        <div className="search-container">
-          <FaSearch className="search-icon"/>
-          <input
-            type="search"
-            className="search-bar"
-            placeholder="Search your ride..."
-          />
+          <Link to={"/"} className="logo">
+            Bicycles.Np
+          </Link>
         </div>
         <div>
           <ul className="nav-menu">
@@ -25,31 +26,27 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <Link to={"/Shop"} className="nav-item">
+              <NavLink to={"/Shop"} className={({isActive}) => isActive ? "nav-item nav-active" : "nav-item"}>
                 Shop
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link to={"/About"} className="nav-item">
+              <NavLink to={"/About"} className={({isActive}) => isActive ? "nav-item nav-active" : "nav-item"}>
                 About
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link to={"/Contact"} className="nav-item">
+              <NavLink to={"/Contact"} className={({isActive}) => isActive ? "nav-item nav-active" : "nav-item"}>
                 Contact
-              </Link>
-            </li>
-            <li>
-              <Link to={"/Cart"} className="nav-item">
-                Cart
-              </Link>
-            </li>
-            <li>
-              <Link to={"/Login"} className="sign-in-btn">
-                Sign in
-              </Link>
+              </NavLink>
             </li>
           </ul>
+        </div>
+        <div>
+          <Link to={"/Cart"} className="cart-wrapper">
+            <LiaShoppingBagSolid className="cart-icon"/>
+              <span className="cart-len">{totalItems}</span>
+          </Link>
         </div>
       </div>
       <Outlet />

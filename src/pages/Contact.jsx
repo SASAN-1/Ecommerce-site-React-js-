@@ -4,11 +4,11 @@ import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 const Contact = () => {
   return (
     <>
-      <h1 className="contact-title">
-        Get in touch
-      </h1>
       <div className="contact-container">
         <ul className="info-list">
+        <h1 className="contact-title">
+          Get in touch
+        </h1>
           <li className="info">
             <FaMapMarkerAlt className='icon'/>
             <div className="info-details">
@@ -35,7 +35,7 @@ const Contact = () => {
             <h3>SEND US A MESSAGE</h3>
             <input type="text" placeholder="Your Name" className="form-input" required/>
             <input type="email" placeholder="Your Email" className="form-input" required/>
-            <textarea placeholder="Write your message here..." class="form-input"></textarea>
+            <textarea placeholder="Write your message here..." className="form-input"></textarea>
             <button type="submit">Send Message</button>
         </form>
       </div>

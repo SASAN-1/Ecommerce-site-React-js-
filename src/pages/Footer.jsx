@@ -1,93 +1,97 @@
-import { FaTwitter } from "react-icons/fa";
+import { PiXLogoBold } from "react-icons/pi";
 import { FaInstagram, FaFacebook, FaYoutube, FaX } from "react-icons/fa6";
+import { Link, useNavigate } from "react-router";
 
 const Footer = () => {
+  const navigate = useNavigate();
   return (
     <>
-      <div className="signup-container">
-        <div className="signup-content">
-          <p>Sign up for latest news and updates.</p>
-            <form action="" className="signup-form">
-              <input type="email" placeholder="EMAIL" id="email-2" className="email-input"/>
-              <input type="submit" value="SIGN UP" className="signup-btn"/>
-            </form>
-        </div>
-      </div>  
       <div className="footer-body">
         <div className="footer-content">
           <div className="footer-nav">
-            <div className="footer-nav-links footer-nav-link">
-              <a href="">
-                <div className="footer-large-text">BIKES</div>
-              </a>
-              <a href="">
-                <div className="footer-large-text">GEAR</div>
-              </a>
-              <a href="">
-                <div className="footer-large-text">PARTS</div>
-              </a>
-              <a href="">
-                <div className="footer-large-text">BRANDS</div>
-              </a>
-              <a href="">
-                <div className="footer-large-text">OUTLET</div>
-              </a>
+            <div className="footer-nav-links footer-nav-1">
+              <Link
+                to={"/shop/bikes"}
+                className="footer-nav-link footer-large-text"
+              >
+                BIKES
+              </Link>
+              <Link
+                to={"/shop/parts"}
+                className="footer-nav-link footer-large-text"
+              >
+                PARTS
+              </Link>
+              <Link
+                to={"/shop/gears"}
+                className="footer-nav-link footer-large-text"
+              >
+                GEARS
+              </Link>
             </div>
             <div className="footer-nav-item">
               <h3 className="footer-heading-small">EXPLORE</h3>
               <div className="footer-nav-links">
-                <a href="">
-                  <div className="footer-small-text">About Us</div>
-                </a>
-                <a href="">
-                  <div className="footer-small-text">Services</div>
-                </a>
-                <a href="">
-                  <div className="footer-small-text">Blog</div>
-                </a>
-                <a href="">
-                  <div className="footer-small-text">Events</div>
-                </a>
+                <Link
+                  to={"/about"}
+                  className="footer-nav-link footer-small-text"
+                >
+                  About Us
+                </Link>
+                <Link
+                  to={""}
+                  className="footer-nav-link footer-small-text"
+                >
+                  Services
+                </Link>
+                <Link
+                  to={""}
+                  className="footer-nav-link footer-small-text"
+                >
+                  Blog
+                </Link>
+                <Link
+                  to={""}
+                  className="footer-nav-link footer-small-text"
+                >
+                  Events
+                </Link>
               </div>
             </div>
             <div className="footer-nav-item">
               <h3 className="footer-heading-small">SUPPORT</h3>
               <div className="footer-nav-links">
-                <a href="">
-                  <div className="footer-small-text">FAQs</div>
-                </a>
-                <a href="">
-                  <div className="footer-small-text">Orders & Shippings</div>
-                </a>
-                <a href="">
-                  <div className="footer-small-text">Returns & Refunds</div>
-                </a>
-                <a href="">
-                  <div className="footer-small-text">Warranty & Repair</div>
-                </a>
+                <Link
+                  to={""}
+                  className="footer-nav-link footer-small-text"
+                >
+                  FAQs
+                </Link>
+                <Link
+                  to={""}
+                  className="footer-nav-link footer-small-text"
+                >
+                  Orders & Shippings
+                </Link>
+                <Link
+                  to={""}
+                  className="footer-nav-link footer-small-text"
+                >
+                  Returns & Refunds
+                </Link>
+                <Link
+                  to={""}
+                  className="footer-nav-link footer-small-text"
+                >
+                  Warranty & Repair
+                </Link>
               </div>
             </div>
             <div className="footer-nav-social">
-              <div className="footer-social-item">
-                <a href="" className="fb-icon">
-                  <FaFacebook />
-                </a>
-              </div>
-              <div className="footer-social-item">
-                <a href="" className="insta-icon">
-                  <FaInstagram />
-                </a>
-              </div>
-              <div className="footer-social-item">
-                <a href="" className="x-icon">
-                  <FaX />
-                </a>
-              </div>
-              <div className="footer-social-item">
-                <a href="" className="yt-icon">
-                  <FaYoutube />
-                </a>
-              </div>
+                <Link className="fb-icon"><FaFacebook/></Link>
+                <Link className="insta-icon"><FaInstagram/></Link>
+                <Link className="x-icon"><PiXLogoBold/></Link>
+                <Link className="yt-icon"><FaYoutube/></Link>
             </div>
           </div>
         </div>
