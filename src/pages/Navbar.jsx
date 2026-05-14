@@ -1,5 +1,6 @@
 import React from "react";
 import { LiaShoppingBagSolid } from "react-icons/lia";
+import { RxHamburgerMenu } from "react-icons/rx";
 import { useSelector } from "react-redux";
 import { Link, NavLink, Outlet } from "react-router";
 
@@ -13,12 +14,16 @@ const Navbar = () => {
   return (
     <>
       <div className="navbar">
+          <div className="ham-menu-wrapper">
+            <Link>
+              <RxHamburgerMenu className="ham-menu" />
+            </Link>
+          </div>
         <div>
           <Link to={"/"} className="logo">
             Bicycles.Np
           </Link>
         </div>
-        <div>
           <ul className="nav-menu">
             <li>
               <Link to={"/"} className="nav-item">
@@ -41,7 +46,6 @@ const Navbar = () => {
               </NavLink>
             </li>
           </ul>
-        </div>
         <div>
           <Link to={"/Cart"} className="cart-wrapper">
             <LiaShoppingBagSolid className="cart-icon"/>

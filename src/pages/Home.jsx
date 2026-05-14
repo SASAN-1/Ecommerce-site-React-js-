@@ -36,7 +36,7 @@ const Home = () => {
         <h1 className="new-arrivals-title">
           NEW ARRIVALS
         </h1>
-        <div className="product-container">
+        <div className="product-container home-product-container">
           {
             productData?.map((item) => (
               <div 

@@ -94,6 +94,15 @@ const Footer = () => {
                 <Link className="yt-icon"><FaYoutube/></Link>
             </div>
           </div>
+        <div className="footer-legal">
+          <div>
+            <p>&copy; BikeShop 2026. All rights reserved.</p>
+          </div>
+          <div className="footer-legal-links">
+            <p>Terms of Service</p>
+            <p>Privacy Policy</p>
+          </div>
+        </div>
         </div>
       </div>
     </>
