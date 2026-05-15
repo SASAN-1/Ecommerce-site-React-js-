@@ -29,7 +29,7 @@ const Footer = () => {
                 GEARS
               </Link>
             </div>
-            <div className="footer-nav-item">
+            <div className="footer-nav-item footer-nav-item-1">
               <h3 className="footer-heading-small">EXPLORE</h3>
               <div className="footer-nav-links">
                 <Link
@@ -58,7 +58,7 @@ const Footer = () => {
                 </Link>
               </div>
             </div>
-            <div className="footer-nav-item">
+            <div className="footer-nav-item footer-nav-item-2">
               <h3 className="footer-heading-small">SUPPORT</h3>
               <div className="footer-nav-links">
                 <Link
