@@ -13,14 +13,14 @@ const addToCart = createSlice({
   reducers: {
     addItemToCart: (state, action) => {
       const existingItem = state.items.find(
-    (item) => item.id === action.payload.id
-  );
+        (item) => item.id === action.payload.id,
+      );
 
-  if (existingItem) {
-    existingItem.quantity += 1; // ✅ increase quantity
-  } else {
-    state.items.push({ ...action.payload, quantity: 1 }); // ✅ new item
-  }
+      if (existingItem) {
+        existingItem.quantity += 1;
+      } else {
+        state.items.push({ ...action.payload, quantity: 1 });
+      }
       localStorage.setItem("cart", JSON.stringify(state.items));
     },
     removeItemFromCart: (state, action) => {

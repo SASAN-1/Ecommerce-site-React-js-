@@ -16,7 +16,7 @@ const Cart = () => {
     setCartData(cartItem);
   }, [cartItem]);
 
-const handleQuantityChange = (id, value) => {
+  const handleQuantityChange = (id, value) => {
     const quantity = value < 1 ? 1 : Number(value);
     dispatch(updateQuantity({ id, quantity }));
   };
@@ -26,7 +26,7 @@ const handleQuantityChange = (id, value) => {
     localStorage.removeItem("cart");
     alert("Item Placed!");
     navigate("/");
-  }
+  };
 
   return (
     <>
@@ -46,11 +46,11 @@ const handleQuantityChange = (id, value) => {
           cartData.map((item) => (
             <div key={item.id} className="cart-item">
               <button
-                  className="remove-btn"
-                  onClick={() => dispatch(removeItemFromCart(item))}
-                >
-                  <ImCross />
-                </button>
+                className="remove-btn"
+                onClick={() => dispatch(removeItemFromCart(item))}
+              >
+                <ImCross />
+              </button>
               <div className="item-info">
                 <img src={item.thumbnail} alt="item.title" />
                 <div className="item-detail">
@@ -59,21 +59,23 @@ const handleQuantityChange = (id, value) => {
                   <div className="item-price">
                     Rs.{" "}
                     {(
-                      Number(item.price.toString().replace(/,/g, '')) * (item.quantity || 1)
+                      Number(item.price.toString().replace(/,/g, "")) *
+                      (item.quantity || 1)
                     ).toLocaleString("en-IN")}
                   </div>
                 </div>
               </div>
-                <div className="item-quantity">
-                  <input 
-                  className="q-value" 
-                  type="number" 
-                  name="qunatity" 
+              <div className="item-quantity">
+                <input
+                  className="q-value"
+                  type="number"
+                  name="qunatity"
                   value={item.quantity ? item.quantity : 1}
-                  onChange={(e) => handleQuantityChange(item.id,e.target.value)}
-                  />
-
-                </div>
+                  onChange={(e) =>
+                    handleQuantityChange(item.id, e.target.value)
+                  }
+                />
+              </div>
             </div>
           ))
         ) : (
@@ -83,13 +85,17 @@ const handleQuantityChange = (id, value) => {
           <div className="total-price">
             <h3>
               Total price: Rs.{" "}
-            {cartData
-              .reduce((sum, item) => sum + Number(item.price.toString().replace(/,/g, '')) * (item.quantity || 1), 0).toLocaleString("en-IN")
-            }
+              {cartData
+                .reduce(
+                  (sum, item) =>
+                    sum +
+                    Number(item.price.toString().replace(/,/g, "")) *
+                      (item.quantity || 1),
+                  0,
+                )
+                .toLocaleString("en-IN")}
             </h3>
-            <button className="checkOut-btn"
-            onClick={handleCheckOut}
-            >
+            <button className="checkOut-btn" onClick={handleCheckOut}>
               CheckOut
             </button>
           </div>
