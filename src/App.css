@@ -222,8 +222,8 @@
 }
 
 .product-card {
-  max-width: 33%;
-  height: 500px;
+  width: 450px;
+  height: 450px;
   border: 1px solid #cccccc67;
   display: flex;
   flex-direction: column;
@@ -242,8 +242,8 @@
 
 .product-img {
   width: 75%;
-  height: auto;
-  object-fit: cover;
+  max-height: 300px;
+  object-fit: contain;
   align-self: center;
   transition: all 0.4s ease-out;
 }
@@ -443,10 +443,11 @@
 /* Contact css */
 .contact-container {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   gap: 50px;
-  width: 100%;
-  margin: 125px auto 70px auto;
+  width: 90%;
+  margin: 150px auto;
   padding: 0 25px;
 }
 
@@ -462,7 +463,7 @@
   line-height: 1.1;
   font-size: 80px;
   padding-bottom: 20px;
-  border-bottom: 1px solid rgba(128, 128, 128, 0.162);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.068);
 }
 
 .info {
@@ -470,7 +471,7 @@
   align-items: center;
   gap: 25px;
   padding: 20px 0;
-  border-bottom: 1px solid rgba(128, 128, 128, 0.162);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.068);
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -497,16 +498,18 @@
 }
 
 .contact-form {
-  width: 55%;
-  background: rgba(211, 211, 211, 0.247);
-  border: 1px solid rgba(0, 0, 0, 0.055);
+  width: 50%;
+  border: 2px solid rgba(0, 0, 0, 0.127);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  border-radius: 20px;
   padding: 40px;
 }
 
-.contact-form h3 {
-  font-weight: 600;
-  font-size: 25px;
-  margin-bottom: 30px;
+.contact-form legend {
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 20px;
+  padding: 0 10px;
   letter-spacing: 1px;
 }
 
@@ -514,39 +517,40 @@
   width: 100%;
   padding: 15px 20px;
   margin-bottom: 20px;
-  border: 1px solid transparent;
-  background: white;
+  border: 2px solid rgba(0, 0, 0, 0.127);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  border-radius: 20px;
   font-size: 15px;
   outline: none;
   transition: all 0.3s;
 }
 
-.form-input:focus {
-  border-color: black;
+.form-input::placeholder {
+  opacity: 80%;
 }
 
 textarea.form-input {
-  height: 150px;
   resize: none;
 }
 
+.form-footer {
+  text-align: right;
+}
+
 .contact-form button {
-  width: 100%;
-  padding: 18px;
-  background-color: black;
-  color: white;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  border: 1px solid transparent;
+  padding: 10px 15px;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: rgb(0, 0, 0);
+  font-weight: 500;
+  border: 2px solid rgba(0, 0, 0, 0.127);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  border-radius: 20px;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .contact-form button:hover {
-  color: black;
-  background-color: #ffffff;
-  border: 1px solid black;
+  transform: translatey(2px);
 }
 
 /* cart css */
@@ -1022,6 +1026,10 @@ textarea.form-input {
 
   .p-info {
     width: 100%;
+  }
+
+  .product-details-container {
+    margin: 20px auto
   }
 
   .contact-container {

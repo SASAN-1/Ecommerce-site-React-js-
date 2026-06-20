@@ -3,13 +3,16 @@ import React, { useEffect, useState } from "react";
 import { ImCross } from "react-icons/im";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
+import { toast } from "sonner";
 
 const Cart = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  // Selects Items stored in cart
   const cartItem = useSelector((state) => state.cart.items);
 
+  // Holds cart Items
   const [cartData, setCartData] = useState(cartItem);
 
   useEffect(() => {
@@ -22,10 +25,9 @@ const Cart = () => {
   };
 
   const handleCheckOut = () => {
+    toast.success("Order placed successfully");
     dispatch(clearCart());
     localStorage.removeItem("cart");
-    alert("Item Placed!");
-    navigate("/");
   };
 
   return (

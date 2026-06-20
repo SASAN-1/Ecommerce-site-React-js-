@@ -1,16 +1,19 @@
-import cover from "../assets/cover.png";
-import exp1 from "../assets/exp1.png";
-import exp2 from "../assets/exp2.png";
-import exp3 from "../assets/exp3.png";
-import exp4 from "../assets/exp4.png";
-import exp5 from "../assets/exp5.png";
-import exp6 from "../assets/exp6.png";
-import exp7 from "../assets/exp7.png";
+import {
+  cover,
+  exp1,
+  exp2,
+  exp3,
+  exp4,
+  exp5,
+  exp6,
+  exp7,
+} from "@/assets/images";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { fetchProducts } from "../redux/product";
+import { fetchProducts } from "@/redux/product";
 import { Link, useNavigate } from "react-router";
 
+// Explore container 1 details
 const expContainer1Items = [
   {
     href: "/shop/bikes",
@@ -34,6 +37,7 @@ const expContainer1Items = [
   },
 ];
 
+// Explore container 2 details
 const expContainer2Items = [
   {
     href: "",
@@ -55,11 +59,14 @@ const expContainer2Items = [
 const Home = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const productData = useSelector((state) => state.product.items);
 
+  // Calls the fetch function in product.js
   useEffect(() => {
     dispatch(fetchProducts("homeProducts"));
-  }, [dispatch]);
+  }, []);
+
+  // Selects the data
+  const productData = useSelector((state) => state.product.items);
 
   return (
     <main className="home-body">
@@ -73,6 +80,7 @@ const Home = () => {
         </p>
       </div>
 
+      {/* New Arrivals Section */}
       <div className="new-arrivals-section">
         <h1 className="new-arrivals-title">NEW ARRIVALS</h1>
 
@@ -95,6 +103,7 @@ const Home = () => {
         </div>
       </div>
 
+      {/* Explore Section */}
       <div className="explore-section">
         <h1 className="explore-title">EXPLORE</h1>
 
@@ -117,6 +126,7 @@ const Home = () => {
         </div>
       </div>
 
+      {/* Sign Up container */}
       <div className="signup-container">
         <div className="signup-content">
           <p>Sign up for latest news and updates.</p>
