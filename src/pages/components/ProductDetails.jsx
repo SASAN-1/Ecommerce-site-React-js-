@@ -1,20 +1,34 @@
-import { addItemToCart, removeItemFromCart } from "@/redux/slice";
+import {
+  addItemToCart,
+  removeItemFromCart,
+  updateQuantity,
+} from "@/redux/slice";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
+import { toast } from "sonner";
 
 const ProductDetails = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { slug } = useParams();
   const cartItem = useSelector((state) => state.cart.items);
   const [product, setProduct] = useState(null);
 
+  const { isLoggedIn } = useSelector((state) => state.auth);
+
+  const cartProduct = product
+    ? cartItem.find((item) => item.id === product.id)
+    : null;
+
   const itemAdded = () => {
     dispatch(addItemToCart(product));
+    toast.success("Item added to the cart.");
   };
 
   const itemRemoved = () => {
     dispatch(removeItemFromCart(product));
+    toast.error("Item removed from cart.");
   };
 
   useEffect(() => {
@@ -42,6 +56,10 @@ const ProductDetails = () => {
     fetchAllProducts();
   }, [slug]);
 
+  const handleQuantityChange = (id, value) => {
+    const quantity = value < 1 ? 1 : Number(value);
+    dispatch(updateQuantity({ id, quantity }));
+  };
   return (
     <>
       {product ? (
@@ -57,20 +75,47 @@ const ProductDetails = () => {
                 <h3 className="dis-price">Rs. {product.price}</h3>
               </div>
               <hr />
+              <ul className="size-container">
+                <li>XS</li>
+                <li>S</li>
+                <li>M</li>
+                <li>L</li>
+                <li>XL</li>
+              </ul>
+              <hr />
               <div className="p-des">
                 <h3 className="des-tag">Description</h3>
                 <p className="des">{product.description}</p>
               </div>
               <hr />
-              {cartItem.find((cart) => cart.id === product.id) ? (
-                <button className="rfc-btn" onClick={itemRemoved}>
-                  Remove from cart
-                </button>
-              ) : (
-                <button className="atc-btn" onClick={itemAdded}>
-                  Add to cart
-                </button>
-              )}
+              <div className="btns-qntity">
+                {cartItem.find((cart) => cart.id === product.id) ? (
+                  <button className="rfc-btn" onClick={itemRemoved}>
+                    Remove from cart
+                  </button>
+                ) : (
+                  <button
+                    className="atc-btn"
+                    onClick={() =>
+                      isLoggedIn
+                        ? itemAdded()
+                        : (navigate("/login"),
+                          toast("Please login before purchasing"))
+                    }
+                  >
+                    Add to cart
+                  </button>
+                )}
+                <input
+                  type="number"
+                  className={`q-value ${cartProduct && "qnt-dis"}`}
+                  value={cartProduct?.quantity || 1 + cartProduct?.quantity}
+                  disabled={cartProduct}
+                  onChange={(e) =>
+                    handleQuantityChange(product.id, e.target.value)
+                  }
+                />
+              </div>
             </div>
           </div>
         </div>

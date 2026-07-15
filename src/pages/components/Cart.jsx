@@ -2,7 +2,7 @@ import { clearCart, removeItemFromCart, updateQuantity } from "@/redux/slice";
 import React, { useEffect, useState } from "react";
 import { ImCross } from "react-icons/im";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { toast } from "sonner";
 
 const Cart = () => {
@@ -71,7 +71,7 @@ const Cart = () => {
                 <input
                   className="q-value"
                   type="number"
-                  name="qunatity"
+                  name="quantity"
                   value={item.quantity ? item.quantity : 1}
                   onChange={(e) =>
                     handleQuantityChange(item.id, e.target.value)
@@ -81,7 +81,9 @@ const Cart = () => {
             </div>
           ))
         ) : (
-          <h4 className="null-item-case">No any items on your cart !!</h4>
+          <div className="empty-cart">
+            <h4 className="null-item-case">No items in your cart!</h4>
+          </div>
         )}
         {cartData.length > 0 && (
           <div className="total-price">
