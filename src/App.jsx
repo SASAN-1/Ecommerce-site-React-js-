@@ -13,11 +13,14 @@ import Bikes from "./pages/components/shop/Bikes";
 import Parts from "./pages/components/shop/Parts";
 import Gears from "./pages/components/shop/Gears";
 import { Toaster } from "sonner";
+import Login from "./pages/components/auth/Login";
+import Register from "./pages/components/auth/Register";
+import Forgot from "./pages/components/auth/Forgot";
 
 const App = () => {
   return (
     <>
-      <Toaster position="top-right" duration={2000} />
+      <Toaster richColors position="top-left" duration={2000} />
       <Routes>
         <Route
           element={
@@ -37,8 +40,13 @@ const App = () => {
           <Route path="/productDetails/:slug" element={<ProductDetails />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/cart" element={<Cart />} />
         </Route>
-        <Route path="/cart" element={<Cart />} />
+
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/forgot-password" element={<Forgot />} />
+
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </>

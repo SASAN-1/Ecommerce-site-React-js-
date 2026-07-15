@@ -17,10 +17,16 @@ const productSlice = createSlice({
   initialState,
   extraReducers: (builder) => {
     // Stores the products in items
-    builder.addCase(fetchProducts.fulfilled, (state, action) => {
-      state.items = action.payload;
-      state.status = "success";
-    });
+    builder
+      .addCase(fetchProducts.pending, (state) => {
+        state.status = "loading";
+        state.items = [];
+      })
+
+      .addCase(fetchProducts.fulfilled, (state, action) => {
+        state.items = action.payload;
+        state.status = "success";
+      });
   },
 });
 

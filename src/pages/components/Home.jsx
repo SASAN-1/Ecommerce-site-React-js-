@@ -9,9 +9,10 @@ import {
   exp7,
 } from "@/assets/images";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { fetchProducts } from "@/redux/product";
 import { Link, useNavigate } from "react-router";
+import { toast } from "sonner";
 
 // Explore container 1 details
 const expContainer1Items = [
@@ -60,6 +61,8 @@ const Home = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const [email, setEmail] = useState("");
+
   // Calls the fetch function in product.js
   useEffect(() => {
     dispatch(fetchProducts("homeProducts"));
@@ -67,6 +70,15 @@ const Home = () => {
 
   // Selects the data
   const productData = useSelector((state) => state.product.items);
+
+  const handleEmail = (e) => {
+    e.preventDefault();
+    if (email == null) {
+      toast.error("Enter email");
+    } else {
+      toast.success("Signed in successfully");
+    }
+  };
 
   return (
     <main className="home-body">
@@ -133,11 +145,15 @@ const Home = () => {
           <form className="signup-form">
             <input
               type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               placeholder="EMAIL"
               id="email-2"
               className="email-input"
             />
-            <button className="signup-btn">SIGN UP</button>
+            <button className="signup-btn" onClick={handleEmail}>
+              SIGN UP
+            </button>
           </form>
         </div>
       </div>
