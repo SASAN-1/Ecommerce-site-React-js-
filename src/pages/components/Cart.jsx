@@ -19,9 +19,16 @@ const Cart = () => {
     setCartData(cartItem);
   }, [cartItem]);
 
-  const handleQuantityChange = (id, value) => {
-    const quantity = value < 1 ? 1 : Number(value);
-    dispatch(updateQuantity({ id, quantity }));
+  const handleQuantityChange = (id, size, value) => {
+    const quantity = Math.max(1, Number(value));
+
+    dispatch(
+      updateQuantity({
+        id,
+        size,
+        quantity,
+      }),
+    );
   };
 
   const handleCheckOut = () => {
@@ -46,7 +53,7 @@ const Cart = () => {
         <hr />
         {cartData.length > 0 ? (
           cartData.map((item) => (
-            <div key={item.id} className="cart-item">
+            <div key={`${item.id}-${item.size}`} className="cart-item">
               <button
                 className="remove-btn"
                 onClick={() => dispatch(removeItemFromCart(item))}
@@ -54,19 +61,25 @@ const Cart = () => {
                 <ImCross />
               </button>
               <div className="item-info">
-                <img src={item.thumbnail} alt="item.title" />
+                <img src={item.thumbnail} alt={item.title} />
                 <div className="item-detail">
                   <h3>{item.title}</h3>
                   <p>{item.brand}</p>
+
+                  <p>
+                    <strong>Size:</strong> {item.size}
+                  </p>
+
                   <div className="item-price">
-                    Rs.{" "}
+                    Rs.
                     {(
                       Number(item.price.toString().replace(/,/g, "")) *
-                      (item.quantity || 1)
+                      item.quantity
                     ).toLocaleString("en-IN")}
                   </div>
                 </div>
               </div>
+
               <div className="item-quantity">
                 <input
                   className="q-value"
@@ -74,7 +87,7 @@ const Cart = () => {
                   name="quantity"
                   value={item.quantity ? item.quantity : 1}
                   onChange={(e) =>
-                    handleQuantityChange(item.id, e.target.value)
+                    handleQuantityChange(item.id, item.size, e.target.value)
                   }
                 />
               </div>

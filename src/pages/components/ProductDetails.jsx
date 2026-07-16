@@ -8,6 +8,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router";
 import { toast } from "sonner";
 
+const sizes = ["XS", "S", "M", "L", "XL"];
+
 const ProductDetails = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -15,19 +17,45 @@ const ProductDetails = () => {
   const cartItem = useSelector((state) => state.cart.items);
   const [product, setProduct] = useState(null);
 
-  const { isLoggedIn } = useSelector((state) => state.auth);
+  const [selectedSize, setSelectedSize] = useState("M");
+
+  const [quantity, setQuantity] = useState(1);
 
   const cartProduct = product
-    ? cartItem.find((item) => item.id === product.id)
+    ? cartItem.find(
+        (item) => item.id === product.id && item.size === selectedSize,
+      )
     : null;
 
+  useEffect(() => {
+    if (cartProduct) {
+      setQuantity(cartProduct.quantity);
+    } else {
+      setQuantity(1);
+    }
+  }, [cartProduct]);
+
+  const { isLoggedIn } = useSelector((state) => state.auth);
+
   const itemAdded = () => {
-    dispatch(addItemToCart(product));
+    dispatch(
+      addItemToCart({
+        ...product,
+        quantity,
+        size: selectedSize,
+      }),
+    );
+
     toast.success("Item added to the cart.");
   };
 
   const itemRemoved = () => {
-    dispatch(removeItemFromCart(product));
+    dispatch(
+      removeItemFromCart({
+        id: product.id,
+        size: selectedSize,
+      }),
+    );
     toast.error("Item removed from cart.");
   };
 
@@ -50,16 +78,10 @@ const ProductDetails = () => {
       // Find product by slug
       const found = combined.find((p) => p.slug === slug);
       setProduct(found);
-      console.log(found);
     };
 
     fetchAllProducts();
   }, [slug]);
-
-  const handleQuantityChange = (id, value) => {
-    const quantity = value < 1 ? 1 : Number(value);
-    dispatch(updateQuantity({ id, quantity }));
-  };
   return (
     <>
       {product ? (
@@ -75,12 +97,29 @@ const ProductDetails = () => {
                 <h3 className="dis-price">Rs. {product.price}</h3>
               </div>
               <hr />
-              <ul className="size-container">
+              {/* <ul className="size-container">
                 <li>XS</li>
                 <li>S</li>
                 <li>M</li>
                 <li>L</li>
                 <li>XL</li>
+              </ul> */}
+              <ul className="size-container">
+                {sizes.map((size) => (
+                  <li
+                    key={size}
+                    className={`${selectedSize === size ? "active-size" : ""} ${
+                      cartProduct ? "disabled-size" : ""
+                    }`}
+                    onClick={() => {
+                      if (!cartProduct) {
+                        setSelectedSize(size);
+                      }
+                    }}
+                  >
+                    {size}
+                  </li>
+                ))}
               </ul>
               <hr />
               <div className="p-des">
@@ -108,12 +147,24 @@ const ProductDetails = () => {
                 )}
                 <input
                   type="number"
-                  className={`q-value ${cartProduct && "qnt-dis"}`}
-                  value={cartProduct?.quantity || 1 + cartProduct?.quantity}
+                  min="1"
+                  className="q-value"
+                  value={quantity}
                   disabled={cartProduct}
-                  onChange={(e) =>
-                    handleQuantityChange(product.id, e.target.value)
-                  }
+                  onChange={(e) => {
+                    const value = Math.max(1, Number(e.target.value));
+                    setQuantity(value);
+
+                    if (cartProduct) {
+                      dispatch(
+                        updateQuantity({
+                          id: product.id,
+                          size: selectedSize,
+                          quantity: value,
+                        }),
+                      );
+                    }
+                  }}
                 />
               </div>
             </div>
