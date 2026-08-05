@@ -14,19 +14,17 @@ const About = () => {
         <div className="history-section">
           <h1 className="history-title">OUR HISTORY</h1>
           <p className="history-paragraph">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Earum
-            expedita architecto voluptatum pariatur, commodi ex praesentium
-            impedit id facere, sunt mollitia nulla sint optio nesciunt. Error
-            eligendi cupiditate dignissimos, dolores quas corporis
-            exercitationem, deleniti laudantium sint magnam atque? Rerum
-            repellendus cumque alias accusamus maxime fugiat nostrum libero,
-            maiores quisquam tempora dolore aliquid, pariatur totam provident,
-            in neque magnam. Dolores rem, iusto saepe sequi magnam expedita.
-            Veritatis iste itaque adipisci reprehenderit explicabo? Tempora
-            excepturi reiciendis dignissimos quibusdam praesentium vel id
-            molestiae tenetur eaque voluptates at ratione modi quos cupiditate
-            recusandae harum fugit, neque corrupti exercitationem. Dolores magni
-            aliquam cum reiciendis illum.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque
+            dolores nisi ab labore nam quasi quis porro illo pariatur reiciendis
+            libero expedita adipisci cum temporibus blanditiis tempore
+            voluptatibus quam, atque ex sapiente sed. Beatae, minus porro illum
+            inventore fugit, doloremque cupiditate eveniet minima ipsa cum
+            provident suscipit ab omnis? Tempore nostrum, a ea quos commodi
+            numquam nemo atque corrupti dolorem nobis repellat quam repellendus
+            eaque possimus in magni, dolor corporis. Perferendis natus totam
+            dignissimos vitae nisi laborum unde eum odio maxime velit, ex
+            praesentium asperiores suscipit at ipsam quos ducimus ut, itaque
+            ipsa quo enim, debitis necessitatibus distinctio. Animi, excepturi.
           </p>
         </div>
       </div>
