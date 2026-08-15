@@ -17,11 +17,6 @@ const infoItems = [
     title: "phone number",
     subtitle: "+977 9748455152",
   },
-  {
-    icon: FaPhoneAlt,
-    title: "phone number",
-    subtitle: " 9748455152",
-  },
 ];
 
 const Contact = () => {
