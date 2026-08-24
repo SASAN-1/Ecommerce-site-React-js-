@@ -81,7 +81,7 @@ const Home = () => {
   };
 
   return (
-    <main className="home-body">
+    <div>
       <div className="home-main-container">
         <img src={cover} alt="cover-img" className="main-img" />
         <h1 className="home-heading">
@@ -157,7 +157,7 @@ const Home = () => {
           </form>
         </div>
       </div>
-    </main>
+    </div>
   );
 };
 
