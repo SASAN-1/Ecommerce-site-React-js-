@@ -1,5 +1,4 @@
 import { clearCart, removeItemFromCart, updateQuantity } from "@/redux/slice";
-import React, { useEffect, useState } from "react";
 import { ImCross } from "react-icons/im";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router";
@@ -10,14 +9,7 @@ const Cart = () => {
   const navigate = useNavigate();
 
   // Selects Items stored in cart
-  const cartItem = useSelector((state) => state.cart.items);
-
-  // Holds cart Items
-  const [cartData, setCartData] = useState(cartItem);
-
-  useEffect(() => {
-    setCartData(cartItem);
-  }, [cartItem]);
+  const cartData = useSelector((state) => state.cart.items);
 
   const handleQuantityChange = (id, size, value) => {
     const quantity = Math.max(1, Number(value));
