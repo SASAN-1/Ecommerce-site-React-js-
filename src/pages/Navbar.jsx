@@ -119,6 +119,7 @@ const Navbar = () => {
                       <Link to="/profile">
                         <span className="log-reg-op">Profile</span>
                       </Link>
+
                       <span className="btn" onClick={handleLogout}>
                         Logout
                       </span>

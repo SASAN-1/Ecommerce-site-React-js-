@@ -121,7 +121,7 @@
   text-decoration: none;
   color: #333;
   font-size: 15px;
-  transition: color 0.2s;
+  transition: all 0.2s ease;
   padding: 10px;
   border-radius: 8px;
 }
@@ -518,7 +518,7 @@
   font-size: 15px;
   font-weight: 500;
   padding: 6px 10px;
-  border: 1px solid rgba(0, 0, 0, 0.207);
+  border: 2px solid rgba(0, 0, 0, 0.127);
   border-radius: 100px;
   transition: all 0.3s ease;
 }
@@ -542,20 +542,35 @@
   width: 16px;
   height: 16px;
   color: rgba(0, 0, 0, 0.444);
+  opacity: 80%;
   position: absolute;
   top: 42%;
-  left: 6px;
+  left: 8px;
 }
 
 .search-input {
   width: 300px;
   font-size: 15px;
   color: black;
-  padding: 6px 6px 6px 28px;
-  background-color: #0000000b;
-  border: 1px solid rgba(0, 0, 0, 0.141);
-  border-radius: 10px;
+  padding: 8px 8px 8px 32px;
+  border: 2px solid rgba(0, 0, 0, 0.127);
+  border-radius: 20px;
   outline: none;
+  transition: all 0.3s;
+}
+
+.search-input:hover {
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.134);
+  background-color: rgba(128, 128, 128, 0.034);
+}
+
+.search-input:focus {
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.134);
+  background-color: rgba(128, 128, 128, 0.034);
+}
+
+.search-input::placeholder {
+  opacity: 80%;
 }
 
 .bike-container,
@@ -622,12 +637,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(219, 219, 219);
+  background-color: rgba(219, 219, 219, 0.453);
+  border: 1px solid gray;
   border-radius: 100%;
+  transition: all 0.3s ease;
 }
 
 .active-size {
-  border: 1px solid black;
+  background-color: black !important;
+  color: white;
+  border: 2px solid rgba(0, 0, 0, 0.127);
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.218);
 }
 
@@ -638,7 +657,8 @@
 }
 
 .size-container li:hover {
-  background-color: rgb(192, 191, 191);
+  background-color: rgb(7, 7, 7);
+  color: white;
 }
 
 .des-tag {
@@ -744,11 +764,13 @@
   right: 2%;
 }
 
-.history-section {
+.history-section,
+.service-section {
   margin: 40px 0 100px 0;
 }
 
-.history-title {
+.history-title,
+.service-title {
   font-family: var(--secondary-font);
   font-weight: 600;
   font-size: 100px;
@@ -757,6 +779,64 @@
 
 .history-paragraph {
   font-size: 20px;
+}
+
+.service-highlights {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+
+.service-highlight {
+  position: relative;
+  overflow: hidden;
+
+  font-size: 24px;
+  font-weight: 600;
+  padding: 24px 16px;
+
+  background-color: rgba(222, 220, 220, 0.225);
+
+  border: 2px solid black;
+
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.service-highlight:hover {
+  box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.419);
+  transform: scale(1.05);
+  color: white
+}
+
+.service-highlight:hover p {
+  color: white;
+}
+
+.service-highlight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: black;
+
+  transform: translateX(-100%);
+  transition: transform 0.4s ease;
+
+  z-index: 0;
+}
+
+.service-highlight:hover::before {
+  transform: translateX(0);
+}
+
+.service-highlight>* {
+  position: relative;
+  z-index: 1;
 }
 
 /* Contact css */
@@ -843,10 +923,14 @@
   transition: all 0.3s;
 }
 
+.form-input:hover {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.134);
+  background-color: rgba(128, 128, 128, 0.062);
+}
+
 .form-input:focus {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.134);
   background-color: rgba(128, 128, 128, 0.062);
-
 }
 
 .form-input::placeholder {

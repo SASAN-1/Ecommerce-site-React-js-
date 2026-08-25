@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { NavLink, Outlet } from "react-router";
-import { useDispatch, useSelector } from "react-redux";
 import { IoSearch } from "react-icons/io5";
-import { fetchProducts } from "@/redux/product";
 
 const Shop = () => {
   const [searchData, setSearchData] = useState("");
