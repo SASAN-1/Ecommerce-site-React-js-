@@ -87,7 +87,15 @@ const Cart = () => {
           ))
         ) : (
           <div className="empty-cart">
-            <h4 className="null-item-case">No items in your cart!</h4>
+            <div className="null-item-case">
+              <h4>No items in your cart!</h4>
+              <button
+                className="null-case-btn"
+                onClick={() => navigate("/shop")}
+              >
+                Add item
+              </button>
+            </div>
           </div>
         )}
         {cartData.length > 0 && (
