@@ -31,7 +31,7 @@ const About = () => {
           exercitationem. Dolores magni aliquam cum reiciendis illum.
         </p>
       </div>
-      <div className="service-section">
+      <div className="service-section" id="services">
         <h1 className="service-title">Why choose us?</h1>
         <div className="service-highlights">
           <span className="service-highlight">

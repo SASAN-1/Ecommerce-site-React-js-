@@ -1,6 +1,6 @@
 import { PiXLogoBold } from "react-icons/pi";
 import { FaInstagram, FaFacebook, FaYoutube } from "react-icons/fa6";
-import { Link, useNavigate } from "react-router";
+import { Link } from "react-router";
 
 const footerNav1Items = [
   {
@@ -23,7 +23,7 @@ const footerNavItem1Items = [
     title: "About Us",
   },
   {
-    href: "",
+    href: "/about#services",
     title: "Services",
   },
   {
@@ -75,7 +75,7 @@ const footerNavSocialItems = [
 ];
 
 const Footer = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   return (
     <>
       <div className="footer-body">
