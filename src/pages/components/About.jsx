@@ -43,9 +43,18 @@ const About = () => {
           <span className="service-highlight">
             <TbTruckDelivery size={34} /> <p>Fast Delivery</p>
           </span>
-          <span className="service-highlight">
+          {/* <span className="service-highlight">
             <RiCustomerService2Line size={28} /> <p>Customer Focus</p>
-          </span>
+          </span> */}
+        </div>
+      </div>
+      <div className="location-section">
+        <h1 className="location-title">Where are we?</h1>
+        <div className="location-container">
+          <p className="location">Baneshowr</p>
+          <p className="location">Baneshowr</p>
+          <p className="location">Baneshowr</p>
+          <p className="location">Baneshowr</p>
         </div>
       </div>
     </div>
