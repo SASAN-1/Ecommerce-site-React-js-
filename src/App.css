@@ -770,7 +770,8 @@
 }
 
 .history-title,
-.service-title {
+.service-title,
+.location-title {
   font-family: var(--secondary-font);
   font-weight: 600;
   font-size: 100px;
@@ -837,6 +838,19 @@
 .service-highlight>* {
   position: relative;
   z-index: 1;
+}
+
+.location-section {
+  padding: 20px 0;
+}
+
+.location-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.location {
+  cursor: pointer;
 }
 
 /* Contact css */
