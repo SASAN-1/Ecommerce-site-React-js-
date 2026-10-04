@@ -1,35 +1,69 @@
 import React from "react";
 
-import { mainImg } from "@/assets/images";
+import { mainImg, story20, story22, story24, story26 } from "@/assets/images";
 import { MdOutlineDirectionsBike } from "react-icons/md";
 import { TbTruckDelivery } from "react-icons/tb";
-import { RiCustomerService2Line } from "react-icons/ri";
 import { HiOutlineWrenchScrewdriver } from "react-icons/hi2";
+
+const stories = [
+  {
+    year: "2020",
+    image: story20,
+    description:
+      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolores, eligendi esse, sit adipisci qui ipsum obcaecati nobis odio cupiditate doloribus nostrum molestiae aliquam.",
+  },
+  {
+    year: "2022",
+    image: story22,
+    description:
+      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolores, eligendi esse, sit adipisci qui ipsum obcaecati nobis odio cupiditate doloribus nostrum molestiae aliquam.",
+  },
+  {
+    year: "2024",
+    image: story24,
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, voluptate.",
+  },
+  {
+    year: "2026",
+    image: story26,
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, voluptate.",
+  },
+];
 
 const About = () => {
   return (
     <div className="about-body">
       <div className="about-main-container">
         <img src={mainImg} alt="About Us img" className="about-img" />
-        <h1 className="about-heading">ABOUT</h1>
+        <p className="about-motto">Built for the ride.</p>
         <p className="about-txt">NEXT STEP:ADVENTURE</p>
       </div>
       <div className="history-section">
-        <h1 className="history-title">OUR HISTORY</h1>
-        <p className="history-paragraph">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Earum
-          expedita architecto voluptatum pariatur, commodi ex praesentium
-          impedit id facere, sunt mollitia nulla sint optio nesciunt. Error
-          eligendi cupiditate dignissimos, dolores quas corporis exercitationem,
-          deleniti laudantium sint magnam atque? Rerum repellendus cumque alias
-          accusamus maxime fugiat nostrum libero, maiores quisquam tempora
-          dolore aliquid, pariatur totam provident, in neque magnam. Dolores
-          rem, iusto saepe sequi magnam expedita. Veritatis iste itaque adipisci
-          reprehenderit explicabo? Tempora excepturi reiciendis dignissimos
-          quibusdam praesentium vel id molestiae tenetur eaque voluptates at
-          ratione modi quos cupiditate recusandae harum fugit, neque corrupti
-          exercitationem. Dolores magni aliquam cum reiciendis illum.
-        </p>
+        <h1 className="history-title">OUR STORY</h1>
+
+        <div className="story-section">
+          {stories.map((story, index) => (
+            <div
+              className={`story ${index % 2 !== 0 ? "reverse" : ""}`}
+              key={story.year}
+            >
+              <div className="story-img-container">
+                <img
+                  src={story.image}
+                  alt={`${story.year} image`}
+                  className="story-img"
+                />
+              </div>
+
+              <div className="story-des">
+                <h1>{story.year}</h1>
+                <p>{story.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
       <div className="service-section" id="services">
         <h1 className="service-title">Why choose us?</h1>
@@ -41,6 +75,9 @@ const About = () => {
             <HiOutlineWrenchScrewdriver size={28} /> <p>Reliable Support</p>
           </span>
           <span className="service-highlight">
+            <HiOutlineWrenchScrewdriver size={28} /> <p>Rider Focused</p>
+          </span>
+          <span className="service-highlight">
             <TbTruckDelivery size={34} /> <p>Fast Delivery</p>
           </span>
           {/* <span className="service-highlight">
@@ -49,7 +86,7 @@ const About = () => {
         </div>
       </div>
       <div className="location-section">
-        <h1 className="location-title">Where are we?</h1>
+        <h1 className="location-title">Where are we today?</h1>
         <div className="location-container">
           <p className="location">Baneshowr</p>
           <p className="location">Baneshowr</p>
